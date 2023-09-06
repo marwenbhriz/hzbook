@@ -1,4 +1,4 @@
-# HZBOOK Simple Django App For Managing Book Store
+# HZBooK Simple Django App For Managing Books
 
 ## Contents Guide
 + [Prerequisites?](#Prerequisites)
