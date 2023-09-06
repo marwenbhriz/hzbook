@@ -30,3 +30,8 @@ az account clear
 az login
 
 az login -u <username> -p <password>
+
+```bash
+//azure cli login
+az login -u <username> -p <password>
+```
