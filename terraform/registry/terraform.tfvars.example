@@ -1,0 +1,4 @@
+resource_group_name = "hexabasecommon"
+location = "japaneast"
+# needs to be unique
+registry_name = ""
