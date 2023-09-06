@@ -34,4 +34,5 @@ az login -u <username> -p <password>
 ```bash
 //azure cli login
 az login -u <username> -p <password>
+az aks create -g rg-hzbook -n hzbook --enable-managed-identity --node-count 1 --generate-ssh-keys
 ```

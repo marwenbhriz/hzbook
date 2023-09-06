@@ -4,17 +4,17 @@ resource "random_password" "sp-password" {
   special = false
 }
 
-resource "azuread_application" "hexa" {
-  name                       = "hexa-k8s"
+resource "azuread_application" "hzbook" {
+  name                       = "hzbook-k8s"
   available_to_other_tenants = false
 }
 
-resource "azuread_service_principal" "hexa" {
-  application_id = azuread_application.hexa.application_id
+resource "azuread_service_principal" "hzbook" {
+  application_id = azuread_application.hzbook.application_id
 }
 
-resource "azuread_service_principal_password" "hexa" {
-  service_principal_id = azuread_service_principal.hexa.id
+resource "azuread_service_principal_password" "hzbook" {
+  service_principal_id = azuread_service_principal.hzbook.id
   value                = random_password.sp-password.result
   end_date_relative    = "87600h" #10y
 }

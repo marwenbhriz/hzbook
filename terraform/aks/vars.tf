@@ -8,7 +8,7 @@ variable "client_password" {
 
 variable "resource_group_name" {
   type    = string
-  default = "hexabase-stg"
+  default = "rg-hzbook"
 }
 
 variable "location" {
@@ -18,5 +18,5 @@ variable "location" {
 
 variable "cluster_name" {
   type    = string
-  default = "hexabase-stg"
+  default = "hzbook"
 }

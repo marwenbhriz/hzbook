@@ -1,8 +1,14 @@
 variable "resource_group_name" {
+  type    = string
+  default = "rg-hzbook"
+}
+
+variable "resource_group_name" {
+  type    = string
+  default = "hzbook"
 }
 
 variable "location" {
-}
-
-variable "registry_name" {
+  type    = string
+  default = "japaneast"
 }

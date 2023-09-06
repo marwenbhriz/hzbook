@@ -14,8 +14,6 @@ spec:
         app: startup-script
     spec:
       hostPID: true
-      nodeSelector:
-        agentpool: nodepoolmg
       containers:
       - name: hostvm-configurer-container
         image: gcr.io/google-containers/startup-script:v1
