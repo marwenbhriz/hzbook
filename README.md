@@ -1,4 +1,4 @@
-# Hriz Book (hzbook) Simple Django App For Managing Book Store
+# HZBOOK Simple Django App For Managing Book Store
 
 ## Contents Guide
 + [Prerequisites?](#Prerequisites)
