@@ -24,7 +24,7 @@ build_push_az () {
         exit 1
     fi
 
-    docker build -t ${ACR_NAME}.azurecr.io/${APP_NAME}:${TAG} --file=./docker/app/Dockerfile.
+    docker build -t ${ACR_NAME}.azurecr.io/${APP_NAME}:${TAG} --file=./docker/app/Dockerfile .
 
     docker push ${ACR_NAME}.azurecr.io/${APP_NAME}:${TAG}
 }

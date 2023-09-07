@@ -29,15 +29,6 @@ spec:
       - name: hzbook
         image: hzbook.azurecr.io/hzbook:latest
         imagePullPolicy: Always
-        readinessProbe:
-          failureThreshold: 3
-          successThreshold: 1
-          httpGet:
-            path: /health_check
-            port: hzbook
-          initialDelaySeconds: 3
-          periodSeconds: 10
-          timeoutSeconds: 5
         lifecycle:
           preStop:
             exec:
