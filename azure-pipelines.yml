@@ -6,7 +6,7 @@ trigger:
   batch: true
   branches:
     include:
-    - deploy
+    - master
 
 pr:
   drafts: false
@@ -21,13 +21,13 @@ variables:
   - group: docker-variables
   - group: deploy-variables
   - name: 'appName'
-    value: 'apicore'
+    value: 'hzbook'
   - name: 'vmImageName'
     value: 'ubuntu-latest'
   - name: 'dockerfilePath'
     value: 'docker/app/Dockerfile'
   - name: 'imageRepository'
-    value: 'beee-apicore'
+    value: 'hzbook'
   - name: 'tag'
     value: '$(Build.BuildNumber)'
 
