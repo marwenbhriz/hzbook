@@ -46,8 +46,6 @@ stages:
       name: SetBranchBuildName
 
 - stage: Build
-  variables:
-    - group: azure-go-module-netrc
   displayName: Build stage
   jobs:  
   - job: Build
@@ -67,7 +65,6 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-        arguments: --build-arg ACCESS_TOKEN_USR=$(githubNetrcUser) --build-arg ACCESS_TOKEN_PWD=$(githubNetrcToken)
     - task: Docker@2
       displayName: Push image
       inputs:
