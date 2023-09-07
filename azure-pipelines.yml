@@ -18,8 +18,8 @@ resources:
 - repo: self
 
 variables:
-  - group: docker-variables
-  - group: deploy-variables
+  #- group: docker-variables
+  #- group: deploy-variables
   - name: 'appName'
     value: 'hzbook'
   - name: 'vmImageName'
