@@ -8,10 +8,9 @@
 
 Create resources in the following order and execute commands below:
 
-1. Service Principal
-2. AKS
-4. Resource Group
-5. Registry
+1. Resource Group
+2. Registry
+3. AKS
 
 ```sh
 cd <folder>

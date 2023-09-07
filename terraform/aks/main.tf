@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 
 # Create a resource group
-resource "azurerm_resource_group" "hexa" {
+resource "azurerm_resource_group" "hzbook" {
   name     = var.resource_group_name
   location = var.location
 }
