@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app: hzbook
       component: microservice
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -26,15 +26,9 @@ spec:
     spec:
       terminationGracePeriodSeconds: 1800
       containers:
-      - name: beee-hzbook
+      - name: hzbook
         image: hzbook.azurecr.io/hzbook:latest
-        volumeMounts:
-          - name: hzbook-configs
-            mountPath: /hzbook/config.env
-            subPath: config.env
-          - name: hzbook-configs
-            mountPath: /config.env
-            subPath: config.env
+        imagePullPolicy: Always
         readinessProbe:
           failureThreshold: 3
           successThreshold: 1
@@ -48,21 +42,25 @@ spec:
           preStop:
             exec:
               command: [ "/bin/sleep", "20" ]
+        resources: {}
         env:
-          - name: ENV
-            value: dev
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "250m"
-          limits: {}
-        imagePullPolicy: Always
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: hzbook-secret
+                key: DB_HOST
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: hzbook-secret
+                key: DB_USER
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: hzbook-secret
+                key: DB_PASS
         ports:
         - name: hzbook
           containerPort: 8000
-      volumes:
-      - name: hzbook-configs
-        configMap:
-          name: hzbook-configs
-      nodeSelector:
-        type: nodehx
+      imagePullSecrets:
+      - name: acr-secret
