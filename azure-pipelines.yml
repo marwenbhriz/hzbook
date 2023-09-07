@@ -51,7 +51,8 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      #vmImage: $(vmImageName)
+      name: mypool
     steps:
     # - bash: printenv
     #   displayName: List environment variables
