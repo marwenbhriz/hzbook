@@ -1,15 +1,11 @@
 #!/bin/bash
 
 # AUTOMATE SCRIPT FOR HZBOOK/PYTHON PROGRAMS
-# TO BUILD FOR REMOTE DOCKER MACHINE BUILDER
 set -e
 
-BUILD_PATH=${BUILD_PATH:-$(which go)}
 APP_NAME=${APP_NAME:-hzbook}
-ENV=${ENV:-local}
+ENV=${ENV:-dev}
 DEV_PS="$APP_NAME"
-OS=${OS:-darwin}
-ARCH=${ARCH:-amd64}
 
 print () {
     echo "-->> $1"
@@ -28,7 +24,7 @@ build_push_az () {
         exit 1
     fi
 
-    docker build -t ${ACR_NAME}.azurecr.io/${APP_NAME}:${TAG} --file=./docker/Dockerfile.
+    docker build -t ${ACR_NAME}.azurecr.io/${APP_NAME}:${TAG} --file=./docker/app/Dockerfile.
 
     docker push ${ACR_NAME}.azurecr.io/${APP_NAME}:${TAG}
 }

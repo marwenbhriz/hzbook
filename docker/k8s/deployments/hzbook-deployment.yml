@@ -1,0 +1,68 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: hzbook
+  labels:
+    app: hzbook
+    component: microservice
+spec:
+  selector:
+    matchLabels:
+      app: hzbook
+      component: microservice
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0
+  progressDeadlineSeconds: 300
+  template:
+    metadata:
+      name: hzbook
+      labels:
+        app: hzbook
+        component: microservice
+    spec:
+      terminationGracePeriodSeconds: 1800
+      containers:
+      - name: beee-hzbook
+        image: hzbook.azurecr.io/hzbook:latest
+        volumeMounts:
+          - name: hzbook-configs
+            mountPath: /hzbook/config.env
+            subPath: config.env
+          - name: hzbook-configs
+            mountPath: /config.env
+            subPath: config.env
+        readinessProbe:
+          failureThreshold: 3
+          successThreshold: 1
+          httpGet:
+            path: /health_check
+            port: hzbook
+          initialDelaySeconds: 3
+          periodSeconds: 10
+          timeoutSeconds: 5
+        lifecycle:
+          preStop:
+            exec:
+              command: [ "/bin/sleep", "20" ]
+        env:
+          - name: ENV
+            value: dev
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits: {}
+        imagePullPolicy: Always
+        ports:
+        - name: hzbook
+          containerPort: 8000
+      volumes:
+      - name: hzbook-configs
+        configMap:
+          name: hzbook-configs
+      nodeSelector:
+        type: nodehx

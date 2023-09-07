@@ -1,6 +1,6 @@
 apiVersion: v2
-name: hx-apicore
-description: Helm chart for Hexabase apicore
+name: hzbook
+description: Helm chart for hzbook
 
 type: application
 
