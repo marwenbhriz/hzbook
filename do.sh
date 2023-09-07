@@ -31,12 +31,11 @@ build_push_az () {
 
 
 deploy_az () {
-    ACR_NAME=${ACR_NAME:-$1}
-    TAG=${TAG:-$2}
-    NODESELECTOR=${NODESELECTOR:-$3}
-    APP_ENV=${APP_ENV:-$4}
+    ACR_NAME=${ACR_NAME:-hzbook}
+    TAG=${TAG:-latest}
+    APP_ENV=${APP_ENV:-$1}
 
-    if [[ -z ${ACR_NAME} ]] || [[ -z ${TAG} ]] || [[ -z ${NODESELECTOR} ]] || [[ -z ${APP_ENV} ]] ; then
+    if [[ -z ${APP_ENV} ]] ; then
         echo 'missing arguments'
         exit 1
     fi
@@ -52,7 +51,6 @@ deploy_az () {
     esac
 
     MANIFESTS=$(helm template $APP_NAME ./helm/${APP_NAME} \
-        --set nodeSelector.agentpool=$NODESELECTOR \
         --set image.tag=$TAG --set image.repository=${ACR_NAME}.azurecr.io/${APP_NAME} \
         --set envVars.ENV=$ENVVARS_ENV)
     
