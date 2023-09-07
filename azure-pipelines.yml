@@ -51,8 +51,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      #vmImage: $(vmImageName)
-      name: mypool
+      vmImage: $(vmImageName)
     steps:
     # - bash: printenv
     #   displayName: List environment variables
@@ -89,8 +88,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy
     pool:
-      #vmImage: $(vmImageName)
-      name: mypool
+      vmImage: $(vmImageName)
     environment: $(deployEnvironment_1)
     strategy:
       runOnce:
