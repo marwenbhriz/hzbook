@@ -18,8 +18,8 @@ resources:
 - repo: self
 
 variables:
-  #- group: docker-variables
-  #- group: deploy-variables
+  - group: docker-variables
+  - group: deploy-variables
   - name: 'appName'
     value: 'hzbook'
   - name: 'vmImageName'
@@ -102,7 +102,6 @@ stages:
               helmChart: $(Pipeline.Workspace)/helm/hx-$(appName)
               releaseName: $(appName)
               overrides: |
-                nodeSelector.agentpool:$(nodeSelectorAgentPool)
                 image.repository:$(containerRegistry)/$(imageRepository)
                 image.tag:$(Build.BuildNumber)
           - task: KubernetesManifest@0
