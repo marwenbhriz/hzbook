@@ -9,8 +9,7 @@
     + [Terraform](#Terraform)
     + [Azure Devops](#azure-devops)
     + [Database](#Database)
-        + [MongoDB](#MongoDB)
-        + [MongoExpress](#MongoExpress)
+    + [HZBooKapp](#HZBooKapp)
 
 ## Prerequisites
 
@@ -28,7 +27,7 @@ You can check your shell by running the command `echo $0`.
 
 ## Azure CLI
 
-```bash
+```sh
 // install azure cli
 brew update && brew install azure-cli
 
@@ -85,3 +84,49 @@ Under `Pipelines` > `Pipelines` create a new one by following these steps:
   * If you cannot find your repository, select `connection` under "You may also select a specific connection".
   * Use an existing connection: _<github_service_connection>_
 * Review: `Run` > `Save`
+
+## Database
+
+### Initializing
+
+```sh
+# 1. Change to the directory
+cd ./db/mongodb/
+
+# 2. Configure hostvm nodes via daemonset and startup-script
+kubectl apply -f hostvm-node-configurer-ds.yaml
+
+# 4. Create mongodb service and statefulsets
+kubectl apply -f mongo-rs.yaml
+
+# 5. Initialize mongo replicaset
+kubectl exec -it mongod-0 -c mongod-container -- mongo
+
+rs.initiate({_id: "MainRepSet", version: 1, members: [
+  { _id: 0, host : "mongod-0.mongodb-service.default.svc.cluster.local:27017" },
+]});
+rs.status(); # wait until become PRIMARY
+
+# 6. Create admin user in mongodb
+db.getSiblingDB("admin").createUser({
+  user : "jrcsuser",
+  pwd  : "password",
+  roles: [ { role: "root", db: "admin" } ]
+});
+
+# 7. change to the directory
+cd ./db/mongoexpress/k8s/
+
+# 8. Create mongo express secret
+kubectl apply -f secret/mongoexpress-secret.yml
+
+# 9. Create mongo express deployment
+kubectl apply -f deployments/mongoexpress-deployment.yml
+
+# 10. Create mongo express service
+kubectl apply -f services/mongoexpress-svc.yml
+```
+
+### MongoExpress Access
+
+access to mongo express UI http://4.241.137.148:8081/ and use db creds to access to hzbook database.
