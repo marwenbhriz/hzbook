@@ -28,7 +28,7 @@ def index(request):
 def save(request):
     if request.method == 'POST':
         if request.POST is not None:
-            Books.insert({
+            Books.insert_one({
                 "title": request.POST['title'],
                 'author': request.POST['author'],
                 'description': request.POST['description']
