@@ -1,9 +1,13 @@
 # HZBooK Simple Django App For Managing Books
 
 ## Contents Guide
-+ [Prerequisites?](#Prerequisites)
++ [Prerequisites](#Prerequisites)
     + [Shell Environment and Editor](#Shell)
     + [Installing Kubernetes](#Kubernetes)
+    + [Installing Azure CLI](#Azure)
++ [Prerequisites](#Prerequisites)
++ [Prerequisites?](#Prerequisites)
+
 
 
 ## Prerequisites
@@ -35,4 +39,9 @@ az login -u <username> -p <password>
 //azure cli login
 az login -u <username> -p <password>
 az aks create -g rg-hzbook -n hzbook --enable-managed-identity --node-count 1 --generate-ssh-keys
+az aks install-cli
+az aks get-credentials --resource-group rg-hzbook --name hzbook
+
+kubectl create secret docker-registry acr-secret --docker-server=hzbook.azurecr.io --docker-username=hzbook --docker-password=VoLRf74C+jm/Bj8QBw4t+gJAbYZ2Ctv29bLD/t8PsX+ACRBVwH0Z
+
 ```

@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'hzbook',
         'CLIENT': {
             'host': 'mongodb+srv://jrcsuser:password@mongodb-service.default.svc.cluster.local',
-            #'host': 'mongodb+srv://jrcsuser:password@127.0.0.1',
+            #'host': 'mongodb+srv://root:pass@127.0.0.1',
             'username': 'jrcsuser',
             'password': 'password',
         }
