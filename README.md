@@ -7,16 +7,16 @@
     + [Installing Azure CLI](#Azure)
 + [Hzbook](#Hzbook)
     + [Terraform](#Terraform)
-    + [Installing Kubernetes](#Kubernetes)
+    + [Azure Devops](#azure-devops)
     + [Installing Azure CLI](#Azure)
 
 ## Prerequisites
 
-Excercise will require the tooling listed below. Ensure that all of those tools have been installed.
+HZBooK will require the tooling listed below. Ensure that all of those tools have been installed.
 
 ## Kubernetes
 
-[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/). 
+Kubectl client [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/). 
 
 Alternatively, you may also go with [Docker Desktop](https://www.docker.com/products/docker-desktop) which is available for Mac and Windows. Docker Desktop provides an option to start a fully functional Kubernetes environment.
 
@@ -41,3 +41,24 @@ kubectl create secret docker-registry acr-secret --docker-server=hzbook.azurecr.
 
 ```
 
+## Terraform
+
+### Requirements
+
+* configured Azure CLI
+
+### Set up azure resources
+
+Create resources in the following order and execute commands below:
+
+1. Resource Group
+2. Registry
+3. AKS
+
+```sh
+cd terraform/<folder>
+
+terraform init
+
+terraform apply
+```
