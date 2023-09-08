@@ -33,13 +33,6 @@ brew update && brew install azure-cli
 
 // login to azure account
 az login
-
-az aks create -g rg-hzbook -n hzbook --enable-managed-identity --node-count 1 --generate-ssh-keys
-az aks install-cli
-az aks get-credentials --resource-group rg-hzbook --name hzbook
-
-kubectl create secret docker-registry acr-secret --docker-server=hzbook.azurecr.io --docker-username=hzbook --docker-password=VoLRf74C+jm/Bj8QBw4t+gJAbYZ2Ctv29bLD/t8PsX+ACRBVwH0Z
-
 ```
 
 ## Terraform
@@ -66,7 +59,7 @@ terraform apply
 
 ## Azure Devops
 
-### CI pipeline aka Azure Pipeline
+### CI pipeline aks Azure Pipeline
 
 #### Prerequisites
 
@@ -132,7 +125,7 @@ kubectl apply -f services/mongoexpress-svc.yml
 access to mongo express UI http://4.241.137.148:8081/ and use db creds to access to hzbook database.
 
 
-## HzBooK
+## HZBooKapp
 
 ### Build adn push
 
@@ -146,7 +139,7 @@ access to mongo express UI http://4.241.137.148:8081/ and use db creds to access
 ./do.sh deploy_az $APP_ENV
 ```
 
-or we can deploy buy trigger our azure devops pipeline; by merging to master branch:
+or we can deploy buy trigger our azure devops pipeline; by merging to master branch.
 
 ### Access to UI
 
