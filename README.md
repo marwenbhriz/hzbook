@@ -8,7 +8,9 @@
 + [Hzbook](#Hzbook)
     + [Terraform](#Terraform)
     + [Azure Devops](#azure-devops)
-    + [Installing Azure CLI](#Azure)
+    + [Database](#Database)
+        + [MongoDB](#MongoDB)
+        + [MongoExpress](#MongoExpress)
 
 ## Prerequisites
 
@@ -72,7 +74,7 @@ terraform apply
 * Github access to repositories (saved as service connection in `Project Settings`)
 * Docker Registry [Service Connection](./azure-devops/req-service-connections.md)
 * [Environment](./azure-devops/req-environments.md) to kubernetes cluster
-* [Variable groups](./req-variable-groups.md): `deploy-variables`, `docker-variables`
+* [Variable groups](./azure-devops/req-variable-groups.md): `deploy-variables`, `docker-variables`
 
 ### Create a new CI Pipeline
 
