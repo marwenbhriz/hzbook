@@ -14,7 +14,7 @@ username = os.environ.get('DB_USER')
 password = os.environ.get('DB_PASS')
 
 #connection_string = f'mongodb://jrcsuser:password@mongodb-service.default.svc.cluster.local'
-connection_string = f'mongodb+srv://{username}:{password}@{host}'
+connection_string = f'mongodb://{username}:{password}@{host}'
 
 client = pymongo.MongoClient(connection_string)
 db = client['hzbook']
@@ -22,10 +22,8 @@ Books = db['books']
 
 # Create your views here.
 def index(request):
-    #books = list(Books.find({}))
-    data = db['books'].find({})
-    print(data)
-    return render(request, 'index.html', context={ 'books': data })
+    books = Books.find({})
+    return render(request, 'index.html', context={ 'books': books })
 
 def save(request):
     if request.method == 'POST':
