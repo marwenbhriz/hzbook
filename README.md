@@ -130,3 +130,24 @@ kubectl apply -f services/mongoexpress-svc.yml
 ### MongoExpress Access
 
 access to mongo express UI http://4.241.137.148:8081/ and use db creds to access to hzbook database.
+
+
+## HzBooK
+
+### Build adn push
+
+```sh
+./do.sh build_push_az $ACR_NAME $Tag
+```
+
+### Deploy
+
+```sh
+./do.sh deploy_az $APP_ENV
+```
+
+or we can deploy buy trigger our azure devops pipeline; by merging to master branch:
+
+### Access to UI
+
+access to mongo express UI http://20.210.33.245:8000/
