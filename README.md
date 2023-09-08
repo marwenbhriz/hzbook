@@ -137,6 +137,13 @@ access to mongo express UI http://4.241.137.148:8081/ and use db creds to access
 
 ```sh
 ./do.sh deploy_az $APP_ENV
+
+// PS C:\Users\mbenh> kubectl get po
+NAME                            READY   STATUS    RESTARTS   AGE
+hostvm-configurer-whsfv         1/1     Running   0          39h
+hzbook-6f57cb4bc6-d85fl         1/1     Running   0          93m
+mongod-0                        1/1     Running   0          36h
+mongoexpress-5d4444d585-nfbwt   1/1     Running   0          35h
 ```
 
 or we can deploy buy trigger our azure devops pipeline; by merging to master branch.
