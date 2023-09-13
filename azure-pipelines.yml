@@ -99,7 +99,7 @@ stages:
             displayName: Bake K8s manifests from Helm chart
             inputs:
               action: 'bake'
-              helmChart: $(Pipeline.Workspace)/helm/hx-$(appName)
+              helmChart: $(Pipeline.Workspace)/helm/$(appName)
               releaseName: $(appName)
               overrides: |
                 image.repository:$(containerRegistry)/$(imageRepository)
