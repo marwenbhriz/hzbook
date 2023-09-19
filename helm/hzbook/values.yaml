@@ -23,7 +23,7 @@ podTerminationGracePeriodSeconds: 1800
 securityContext: {}
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - port: 8000
       protocol: TCP
