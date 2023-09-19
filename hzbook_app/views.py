@@ -13,12 +13,11 @@ host = os.environ.get('DB_HOST')
 username = os.environ.get('DB_USER')
 password = os.environ.get('DB_PASS')
 
-#connection_string = 'mongodb+srv://irisminami0307:538167294@itamiworld.svqaz2d.mongodb.net/'
-
+#connection_string = f'mongodb://jrcsuser:password@mongodb-service.default.svc.cluster.local'
 connection_string = f'mongodb://{username}:{password}@{host}'
 
 client = pymongo.MongoClient(connection_string)
-db = client['test']
+db = client['hzbook']
 Books = db['books']
 
 # Create your views here.

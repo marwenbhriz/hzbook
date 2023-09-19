@@ -3,14 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD</title>
+    <title>HzBooK Book Managmen System</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            font-family: Tahoma, Geneva, sans-serif;
+        }
+        table td {
+            padding: 15px;
+        }
+        table thead td {
+            background-color: #54585d;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 13px;
+            border: 1px solid #54585d;
+        }
+        table tbody td {
+            color: #636363;
+            border: 1px solid #dddfe1;
+        }
+        table tbody tr {
+            background-color: #f9fafb;
+        }
+        table tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        .c-button {
+            appearance: none;
+            border: 0;
+            border-radius: 5px;
+            background: #54585d;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 16px;
+            }
+    </style>
 </head>
 <body>
     <table>
         <thead>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Description</th>
+
         </thead>
         <tbody>
             {% for item in context.books %}
@@ -22,6 +55,6 @@
             {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'save' %}">Add</a>
+    <a href="{% url 'save' %}">Add Book</a>
 </body>
 </html>
