@@ -30,10 +30,8 @@ spec:
         component: microservice
         tier: backend
     spec:
-      {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+      - name: acr-secret
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       terminationGracePeriodSeconds: {{ .Values.podTerminationGracePeriodSeconds }}
