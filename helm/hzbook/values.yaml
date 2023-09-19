@@ -1,4 +1,4 @@
-# Default values for hx-apicore.
+# Default values for hzbook.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -21,12 +21,6 @@ podSecurityContext: {}
 podTerminationGracePeriodSeconds: 1800
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
 
 service:
   type: ClusterIP
