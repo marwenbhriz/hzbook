@@ -63,5 +63,3 @@ spec:
                 secretKeyRef:
                   name: hzbook-secret
                   key: DB_PASS
-  imagePullSecrets:
-    - name: acr-secret   

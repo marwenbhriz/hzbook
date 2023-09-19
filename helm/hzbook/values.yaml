@@ -9,7 +9,7 @@ image:
   pullPolicy: Always
   tag: ''
 
-imagePullSecrets: []
+imagePullSecrets: acr-secret
 nameOverride: ''
 fullnameOverride: ''
 
