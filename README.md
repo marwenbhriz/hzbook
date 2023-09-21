@@ -152,4 +152,4 @@ or we can deploy buy trigger our azure devops pipeline; by merging to master bra
 
 ### Access to UI
 
-access to mongo express UI http://20.210.33.245:8000/
+access to mongo express UI http://4.241.5.63:8000/
