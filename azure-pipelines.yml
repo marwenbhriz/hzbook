@@ -6,13 +6,13 @@ trigger:
   batch: true
   branches:
     include:
-    - master
+    - develop
 
 pr:
   drafts: false
   branches:
     include:
-      - develop
+      - deploy
 
 resources:
 - repo: self
